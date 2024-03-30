@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload and Predict</title>
+    <link rel="stylesheet" type="text/css" href="static/css/styles.css">
+</head>
+<body>
+    <h2>Upload and Predict</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*">
+        <input type="submit" value="Upload and Detect">
+    </form>
+
+    <p id="error-message"></p>
+
+    <pre id="predictions"></pre>
+
+    <button id="back-home-btn">Back to Home</button>
+
+    <script src="static/js/upload_handler.js"></script>
+</body>
+</html>
