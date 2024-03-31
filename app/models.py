@@ -22,3 +22,27 @@ class User(UserMixin, db.Model):
 
     def __repr__(self):
         return f'<User {self.username}>'
+    
+class Meals(db.Model):
+    mealId = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    meals_name = db.Column(db.String(255))
+    calories = db.Column(db.Float)
+    carbs = db.Column(db.Float)
+    proteins = db.Column(db.Float)
+    fats = db.Column(db.Float)
+    minerals = db.Column(db.Float)
+    userId = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    user = db.relationship('User', backref=db.backref('meals', lazy=True))
+
+    def __repr__(self):
+        return f'<Meals {self.meals_name}>'
+    
+class Nutrision(db.Model):
+    nutrisionId = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(100), nullable=False)
+    calories = db.Column(db.Float, nullable=False)
+    carbs = db.Column(db.Float, nullable=False)
+    proteins = db.Column(db.Float, nullable=False)
+    fats = db.Column(db.Float, nullable=False)
+    minerals = db.Column(db.Float, nullable=False)

@@ -3,6 +3,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 from functions import load_labels, tflite_detect_objects, generate_frames
 from app import app, db
 from app.forms import LoginForm, RegistrationForm
+from .utils import save_predictions
 from app.models import User
 import numpy as np
 import cv2
@@ -65,6 +66,14 @@ def upload_file():
         return jsonify({'predictions': detections})
 
     return render_template('upload.html')
+
+@app.route('/save_prediction', methods=['POST'])
+def save_predictions_route():
+    data = request.json
+    user_id = data.get('user_id')
+    prediction = data.get('prediction')
+    result = save_predictions(user_id, prediction)
+    return jsonify(result)
 
 @app.route('/video_feed')
 @login_required
