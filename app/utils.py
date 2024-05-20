@@ -13,7 +13,7 @@ def save_predictions(user_id, predictions):
         label = prediction['label']
         confidence = prediction['confidence']
         
-        # Cari nutrisi berdasarkan label prediksi
+        # Cari nutrisi berdasarkan label    
         nutrition = Nutrision.query.filter_by(name=label).first()
         if not nutrition:
             # Jika label tidak ditemukan dalam tabel Nutrision, Anda dapat melakukan penanganan khusus di sini

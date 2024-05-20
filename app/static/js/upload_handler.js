@@ -45,7 +45,7 @@ async function handleSubmit(event) {
 }
 
 async function savePrediction(prediction) {
-    const user_id = getUserID(); // Dapatkan ID pengguna dari sesi atau dari mana pun Anda menyimpannya
+    const user_id = getUserID();
     const data = { user_id: user_id, prediction: prediction };
     
     try {
@@ -67,8 +67,8 @@ async function savePrediction(prediction) {
 }
 
 function getUserID() {
-    // Implementasi untuk mendapatkan ID pengguna
-    // Anda dapat menggunakan metode seperti mengambil dari sesi, cookies, atau header yang dikirimkan dari server
+    // jika ID pengguna disimpan dalam sessionStorage dengan kunci 'userID'
+    return sessionStorage.getItem('id');
 }
 
 document.addEventListener('DOMContentLoaded', function() {

@@ -3,22 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload and Predict</title>
-    <link rel="stylesheet" type="text/css" href="static/css/styles.css">
+    <title>TrackMeals - Upload and Predict</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h2>Upload and Predict</h2>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*">
-        <input type="submit" value="Upload and Detect">
-    </form>
-
-    <p id="error-message"></p>
-
-    <pre id="predictions"></pre>
-
-    <button id="back-home-btn">Back to Home</button>
-
+    <div class="container">
+        <header>
+            <h1>TrackMeals</h1>
+            <h2>Upload and Predict</h2>
+        </header>
+        <main>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <div class="file-input">
+                    <input type="file" name="file" accept="image/*" id="file-upload">
+                    <label for="file-upload">Choose a file</label>
+                </div>
+                <input type="submit" value="Upload and Detect" class="submit-btn">
+            </form>
+            <p id="error-message" class="error-message"></p>
+            <pre id="predictions" class="predictions"></pre>
+            <button id="back-home-btn" class="back-btn">Back to Home</button>
+            <button id="save-prediction-btn" class="save-btn" disabled>Save Prediction</button>
+        </main>
+    </div>
     <script src="static/js/upload_handler.js"></script>
 </body>
 </html>
