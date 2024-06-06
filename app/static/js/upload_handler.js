@@ -30,6 +30,9 @@ async function handleSubmit(event) {
                     result += `Label: ${prediction.label}\n`;
                     result += `Confidence: ${prediction.confidence.toFixed(2)}\n`;
                     result += `Bounding Box: ${prediction.bbox}\n\n`;
+                    
+                    // Simpan hasil prediksi
+                    savePrediction(prediction);
                 });
                 document.getElementById('predictions').innerText = result;
             }
@@ -39,6 +42,33 @@ async function handleSubmit(event) {
         document.getElementById('error-message').innerText = 'An error occurred';
         document.getElementById('predictions').innerText = '';
     }
+}
+
+async function savePrediction(prediction) {
+    const user_id = getUserID();
+    const data = { user_id: user_id, prediction: prediction };
+    
+    try {
+        const response = await fetch('/save_prediction', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        
+        if (!response.ok) {
+            throw new Error('Failed to save prediction');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        // Handle error jika gagal menyimpan prediksi
+    }
+}
+
+function getUserID() {
+    // jika ID pengguna disimpan dalam sessionStorage dengan kunci 'userID'
+    return sessionStorage.getItem('id');
 }
 
 document.addEventListener('DOMContentLoaded', function() {

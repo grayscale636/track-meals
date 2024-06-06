@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="profile-header">
+            <div class="profile-info">
+                <img src="{{ url_for('static', filename='images/profile.png') }}" alt="Profile Picture" class="profile-picture">
+                <div class="user-details">
+                    <span class="username">Gery</span>
+                    <span class="gender">Male (20)</span>
+                </div>
+            </div>
+            <div class="profile-actions">
+                <button class="btn btn-edit">Edit Profile</button>
+                <button class="btn btn-logout">Logout</button>
+            </div>
+        </div>
+        <div class="food-info">
+            <div class="food-header">
+                <span class="food-today">Food Today:</span>
+                <span class="daily-calories">Daily Calories: <span class="calories-value">kcal</span></span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Jenis Makanan</th>
+                        <th>Jumlah Kalori</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>nasi-putih</td>
+                        <td></td>
+                    </tr>
+                    <!-- Add more food items here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

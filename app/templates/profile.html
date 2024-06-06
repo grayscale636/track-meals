@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style_profile.css') }}">
+    <title>User Profile</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-info">
+            <div class="profile-header">
+                <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Profile Picture" class="profile-picture">
+                <div class="user-details">
+                    <h1>{{ user.username }}</h1>
+                    <p>{{ user.email }}</p>
+                </div>
+            </div>
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <h3>Gender</h3>
+                    <p>{{ user.gender }}</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Daily Calories</h3>
+                    <p>{{ user.daily_calories }} kcal</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Age</h3>
+                    <p>{{ user.age }} years</p>
+                </div>
+            </div>
+            <div class="profile-actions">
+                <button class="btn-edit">Edit Profile</button>
+                <button class="btn-logout">Logout</button>
+            </div>
+        </div>
+        <div class="food-today">
+            <h3>Food Today</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Jenis Makanan</th>
+                        <th>Jumlah Kalori</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for food in prediction %}
+                    <tr>
+                        <td>{{ food }}</td>
+                        <td>{{ food.kalori }} kcal</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="food-info-btn">
+                <button class="btn-edit">
+                    <a href="{{ url_for('register') }}">Food Informations</a>
+                </button>
+            </div>
+        </div>
+    </body>
+</html>
