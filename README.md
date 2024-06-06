@@ -14,6 +14,10 @@ This repository contains a machine learning model for food detection using trans
 
 4. **OS module**: A Python module that provides a way to interact with the operating system, allowing file system operations.
 
+5. **Docker**:  for developing, shipping, and running applications in container
+
+6. **Amazone Web Services**: for deploy to acessable internet
+
 ## Steps to Replicate
 
 ### Prerequisites
