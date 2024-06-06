@@ -1,6 +1,8 @@
 from flask import render_template, flash, redirect, url_for, jsonify, Response, request
 from app.models import Meals
 from flask_login import current_user, login_user, logout_user, login_required
+from app import db
+from app.models import User, Meals, Nutrision, Prediction
 from functions import load_labels, tflite_detect_objects, generate_frames
 from app import app, db
 from app.forms import LoginForm, RegistrationForm
@@ -8,7 +10,6 @@ from .utils import save_predictions
 from app.models import User, Prediction, Nutrision
 import numpy as np
 import cv2
-from sqlalchemy import func
 
 @app.route('/')
 @app.route('/index')
@@ -47,7 +48,12 @@ def register():
 @app.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html', user=current_user)
+    user = current_user
+    prediction = Prediction.query.all()
+    nama_makanan = []
+    for food in prediction:
+        nama_makanan.append(food.label)
+    return render_template('profile.html', user=user, prediction=nama_makanan)
 
 @app.route('/logout')
 def logout():

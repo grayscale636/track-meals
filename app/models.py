@@ -27,7 +27,7 @@ class User(UserMixin, db.Model):
     
 class Meals(db.Model):
     mealId = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    meals_name = db.Column(db.String(255))
+    meals_name = db.Column(db.String(255))  
     calories = db.Column(db.Float)
     carbs = db.Column(db.Float)
     proteins = db.Column(db.Float)

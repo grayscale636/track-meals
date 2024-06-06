@@ -13,8 +13,18 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
+    width: 90%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-info {
+    width: 45%;
+}
+
+.food-today {
+    width: 45%;
 }
 
 .profile-header {
@@ -96,6 +106,12 @@ body {
 
 .btn-logout {
     background-color: #dc3545;
+}
+
+.food-info-btn {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
 }
 
 .btn-logout:hover {
